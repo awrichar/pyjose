@@ -7,5 +7,5 @@ setup(name='pyjose',
       description='Python security with JOSE',
       author='Richard Barnes',
       author_email='rlb@ipv.sx',
-      packages=['jose', 'jose.cryptlib', 'jose.test'],
+      packages=['jose', 'jose.cryptlib', 'jose.test', 'jose.validate'],
      )
