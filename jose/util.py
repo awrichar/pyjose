@@ -95,7 +95,7 @@ def splitHeader(header, protect):
       unprotected header, and the second is the protected.
     """
     if protect == "*":
-        protect = header.keys()
+        protect = list(header.keys())
     protected = dict([(name, header[name]) \
         for name in header if name in protect])
     unprotected = dict([(name, header[name]) \

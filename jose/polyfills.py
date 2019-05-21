@@ -21,8 +21,8 @@ from Crypto.Hash import HMAC, SHA256, SHA384, SHA512
 from Crypto.Cipher import AES
 from Crypto.Cipher.AES import AESCipher
 from Crypto.Util.strxor import strxor
-from cryptlib.PBKDF2 import PBKDF2
-from util import b64enc, b64dec
+from .cryptlib.PBKDF2 import PBKDF2
+from .util import b64enc, b64dec
 from math import ceil
 
 # PKCS#5 padding, since it's not in PyCrypto
@@ -169,7 +169,7 @@ def aes_key_wrap(key, p):
     assert( len(p) % 8 == 0 )
     
     n = len(p)/8
-    r = range(n+1)
+    r = list(range(n+1))
     r[0] = b'\0\0\0\0\0\0\0\0'
     for i in range(1,n+1):
         r[i] = p[(i-1)*8:i*8]
@@ -200,7 +200,7 @@ def aes_key_unwrap(key, c):
     assert( len(c) % 8 == 0 )
     
     n = len(c)/8 - 1
-    r = range(n+1)
+    r = list(range(n+1))
     r[0] = b'\0\0\0\0\0\0\0\0'
     for i in range(1,n+1):
         r[i] = c[i*8:(i+1)*8]
@@ -218,7 +218,7 @@ def aes_key_unwrap(key, c):
     if (a == b'\xA6\xA6\xA6\xA6\xA6\xA6\xA6\xA6'):
         return "".join(r[1:])
     else:
-        raise "Key unwrap integrity check failed"
+        raise Exception("Key unwrap integrity check failed")
 
 def PBKDF_key_wrap(key, CEK, hashmod, dkLen, header={}):
     """

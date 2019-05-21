@@ -8,7 +8,7 @@ forms of serialized JOSE objects.
 """
 
 from jose.serialize import deserialize_compact, deserialize_JSON, deserialize_msgpack
-from unserialized import *
+from .unserialized import *
 
 
 ### JSON-serialized

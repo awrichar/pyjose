@@ -30,15 +30,15 @@ payload = "Shall I compare the to a summer's day?"
 # Test sign / verify with jwk
 jws1 = jose.sign({ "alg":"RS256", "jwk": jwk_pub }, [jwk_priv], payload )
 ver1 = jose.verify(jws1, [])
-print jws1
-print
-print ver1
-print
+print(jws1)
+print()
+print(ver1)
+print()
 
 # Test sign / verify with x5c
 jws2 = jose.sign({ "alg":"RS256", "x5c": [cert] }, [jwk_priv], payload )
 ver2 = jose.verify(jws1, [])
-print jws2
-print
-print ver2
-print
+print(jws2)
+print()
+print(ver2)
+print()

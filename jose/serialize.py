@@ -12,9 +12,9 @@ JOSE serializations.  The following serializations are supported:
 import json
 import msgpack
 from copy import copy
-from validate.unserialized import \
+from .validate.unserialized import \
     isJOSE_unserialized, isJWS_unserialized, isJWE_unserialized, isJWP_unserialized
-from util import b64enc, b64dec
+from .util import b64enc, b64dec
                      
 
 def deserialize(x):

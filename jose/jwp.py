@@ -17,9 +17,9 @@ verbs "bundle" and "unbundle", respectively.
 import json
 import zlib
 from copy import copy
-from util import *
-from validate import *
-import serialize
+from .util import *
+from .validate import *
+from . import serialize
 
 supported_alg = [
     "none"

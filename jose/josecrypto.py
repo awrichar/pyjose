@@ -21,10 +21,10 @@ from Crypto.Util.asn1 import DerSequence
 
 import re
 import base64
-import polyfills
-from cryptlib.aes_gcm import AES_GCM, InvalidTagException
-from cryptlib.ecc import NISTEllipticCurve, P256, P384, P521
-from util import b64enc, b64dec, getOrRaise
+from . import polyfills
+from .cryptlib.aes_gcm import AES_GCM, InvalidTagException
+from .cryptlib.ecc import NISTEllipticCurve, P256, P384, P521
+from .util import b64enc, b64dec, getOrRaise
 
 
 def keyLength(enc):

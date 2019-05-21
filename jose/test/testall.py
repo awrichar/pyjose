@@ -95,7 +95,7 @@ fmt = "| {:3s} | {:20s} | {:15s} | {:7s} | {:7s} | {:7s} |"
 div = "|:----|:---------------------|:----------------|:--------|:--------|:--------|"
 testix = 0
 def reportResult(testix, alg, enc, level, valid, correct):
-    print fmt.format(str(testix), alg, enc, str(level), str(valid), str(correct))
+    print(fmt.format(str(testix), alg, enc, str(level), str(valid), str(correct)))
 
 testJWSbasic = True
 testJWEbasic = False
@@ -105,9 +105,9 @@ testJWEmulti = False
 
 # Print a header 
 
-print div
-print fmt.format("", "alg", "enc", "protect", "valid", "correct")
-print div
+print(div)
+print(fmt.format("", "alg", "enc", "protect", "valid", "correct"))
+print(div)
 
 
 # Test all JWS algorithms
@@ -127,7 +127,7 @@ if testJWSbasic:
             vpayload = result["payload"] if "payload" in result else ""
             correct = (payload == vpayload) 
             reportResult(testix, alg, "", p, result["result"], correct)
-    print div
+    print(div)
 
 # Test all JWE algorithms (alg and enc)
 
@@ -151,7 +151,7 @@ if testJWEbasic:
                 plaintext = result["plaintext"] if "plaintext" in result else ""
                 correct = (payload == plaintext) 
                 reportResult(testix, alg, enc, p, result["result"], correct)
-    print div
+    print(div)
 
 
 # Test multi-signer
@@ -172,7 +172,7 @@ if testJWSmulti:
         valid = (valid and v)
     correct = (payload == resm["payload"])
     reportResult(testix, "multi-sign", "", "[]", valid, correct)
-    print div
+    print(div)
 
 # Test multi-recipient
 
@@ -193,4 +193,4 @@ if testJWEmulti:
           and (payload == decm1["plaintext"]) \
           and (payload == decm2["plaintext"])
     reportResult(testix, "multi-rcpt", "", "[]", valid, correct)
-    print div
+    print(div)

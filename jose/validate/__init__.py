@@ -17,8 +17,8 @@ can just import everything you need from here::
   # etc.
 """
 
-from unserialized import *
-from serialized import *
+from .unserialized import *
+from .serialized import *
 
 ### JOSE general
 

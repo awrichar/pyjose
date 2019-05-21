@@ -18,11 +18,11 @@ jws = "eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAiOjEz
 jwsd = deserialize(jws)
 jwsb = serialize_msgpack(jwsd)
 ver = jose.verify(jwsb, [key])
-print "HS256 {res} ({clen} / {blen} / {blen64})".format(
+print("HS256 {res} ({clen} / {blen} / {blen64})".format(
     res = ver["result"], 
     clen = len(jws), 
     blen = len(jwsb), 
-    blen64 = len(b64enc(jwsb)))
+    blen64 = len(b64enc(jwsb))))
 
 
 
@@ -40,11 +40,11 @@ jws = "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0
 jwsd = deserialize(jws)
 jwsb = serialize_msgpack(jwsd)
 ver = jose.verify(jwsb, [key])
-print "RS256 {res} ({clen} / {blen} / {blen64})".format(
+print("RS256 {res} ({clen} / {blen} / {blen64})".format(
     res = ver["result"], 
     clen = len(jws), 
     blen = len(jwsb), 
-    blen64 = len(b64enc(jwsb)))
+    blen64 = len(b64enc(jwsb))))
 
 
 ## A.3. ES256
@@ -62,11 +62,11 @@ jws = "eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0
 jwsd = deserialize(jws)
 jwsb = serialize_msgpack(jwsd)
 ver = jose.verify(jwsb, [key])
-print "ES256 {res} ({clen} / {blen} / {blen64})".format(
+print("ES256 {res} ({clen} / {blen} / {blen64})".format(
     res = ver["result"], 
     clen = len(jws), 
     blen = len(jwsb), 
-    blen64 = len(b64enc(jwsb)))
+    blen64 = len(b64enc(jwsb))))
 
 
 ## A.4. ES512
@@ -84,11 +84,11 @@ jws = "eyJhbGciOiJFUzUxMiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0
 jwsd = deserialize(jws)
 jwsb = serialize_msgpack(jwsd)
 ver = jose.verify(jwsb, [key])
-print "ES512 (-14) {res} ({clen} / {blen} / {blen64})".format(
+print("ES512 (-14) {res} ({clen} / {blen} / {blen64})".format(
     res = ver["result"], 
     clen = len(jws), 
     blen = len(jwsb), 
-    blen64 = len(b64enc(jwsb)))
+    blen64 = len(b64enc(jwsb))))
 
 
 jws_fixed = "eyJhbGciOiJFUzUxMiJ9.UGF5bG9hZA.AdwMgeerwtHoh-l192l60hp9wAHZFVJbLfD_UxMi70cwnZOYaRI1bKPWROc-mZZqwqT2SI-KGDKB34XO0aw_7XdtAG8GaSwFKdCAPZgoXD2YBJZCPEX3xKpRwcdOO8KpEHwJjyqOgzDO7iKvU8vcnwNrmxYbSW9ERBXukOXolLzeO_Jn"
@@ -96,11 +96,11 @@ jws_fixed = "eyJhbGciOiJFUzUxMiJ9.UGF5bG9hZA.AdwMgeerwtHoh-l192l60hp9wAHZFVJbLfD
 jwsd = deserialize(jws_fixed)
 jwsb = serialize_msgpack(jwsd)
 ver = jose.verify(jwsb, [key])
-print "ES512 (fixed) {res} ({clen} / {blen} / {blen64})".format(
+print("ES512 (fixed) {res} ({clen} / {blen} / {blen64})".format(
     res = ver["result"], 
     clen = len(jws_fixed), 
     blen = len(jwsb), 
-    blen64 = len(b64enc(jwsb)))
+    blen64 = len(b64enc(jwsb))))
 
 
 # JWE
@@ -119,12 +119,12 @@ jwe = "eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00ifQ.OKOawDo13gRp2ojaHV7LFpZcgV
 jwed = deserialize(jwe)
 jweb = serialize_msgpack(jwed)
 dec = jose.decrypt(jweb, [key])
-print "OAEP+GCM (fixed) {res} {pt} ({clen} / {blen} / {blen64})".format(
+print("OAEP+GCM (fixed) {res} {pt} ({clen} / {blen} / {blen64})".format(
     res = dec["result"], 
     pt = dec["plaintext"],
     clen = len(jwe), 
     blen = len(jweb), 
-    blen64 = len(b64enc(jweb)))
+    blen64 = len(b64enc(jweb))))
 
 
 ## A.2. "RSA_1_5" + "AES_128_CBC_HMAC_SHA_256"
@@ -141,12 +141,12 @@ jwe = "eyJhbGciOiJSU0ExXzUiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0.UGhIOguC7IuEvf_NPVaXs
 jwed = deserialize(jwe)
 jweb = serialize_msgpack(jwed)
 dec = jose.decrypt(jweb, [key])
-print "v1.5+CBC+HMAC (fixed) {res} {pt} ({clen} / {blen} / {blen64})".format(
+print("v1.5+CBC+HMAC (fixed) {res} {pt} ({clen} / {blen} / {blen64})".format(
     res = dec["result"], 
     pt = dec["plaintext"],
     clen = len(jwe), 
     blen = len(jweb), 
-    blen64 = len(b64enc(jweb)))
+    blen64 = len(b64enc(jweb))))
 
 ## A.3. "A128KW" + "AES_128_CBC_HMAC_SHA_256"
 
@@ -159,10 +159,10 @@ jwe = "eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0.6KB707dM9YTIgHtLvtgWQ
 jwed = deserialize(jwe)
 jweb = serialize_msgpack(jwed)
 dec = jose.decrypt(jweb, [key])
-print "KW+CBC+HMAC (fixed) {res} {pt} ({clen} / {blen} / {blen64})".format(
+print("KW+CBC+HMAC (fixed) {res} {pt} ({clen} / {blen} / {blen64})".format(
     res = dec["result"], 
     pt = dec["plaintext"],
     clen = len(jwe), 
     blen = len(jweb), 
-    blen64 = len(b64enc(jweb)))
+    blen64 = len(b64enc(jweb))))
 

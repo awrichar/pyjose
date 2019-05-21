@@ -18,10 +18,10 @@ Major functions provided in this module:
 
 import json
 from copy import copy
-import josecrypto
-from util import *
-from validate import *
-import serialize
+from . import josecrypto
+from .util import *
+from .validate import *
+from . import serialize
 
 supported_alg = [
     "HS256", "HS384", "HS512", 

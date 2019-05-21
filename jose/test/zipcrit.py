@@ -13,14 +13,14 @@ keys = [{ "kty":"oct", "k":"i-ueSNQgcr0q7auC8YUrYg" }]
 jwe1 = jose.encrypt(jwe_header, keys, plaintext, protect="*")
 dec1 = jose.decrypt(jwe1, keys)
 
-print "Compact JWE with compression:"
+print("Compact JWE with compression:")
 #print json.dumps(jwe1, indent=4, sort_keys=True)
-print serialize_compact(jwe1)
-print
+print(serialize_compact(jwe1))
+print()
 
-print "Decrypted, decompressed JWE:"
-print dec1
-print
+print("Decrypted, decompressed JWE:")
+print(dec1)
+print()
 
 
 # Criticality test
@@ -35,8 +35,8 @@ try:
     jws1 = jose.sign(jws_header1, keys, payload)
     ver1 = jose.verify(jws1, keys)
 except Exception as e:
-    print e
-print
+    print(e)
+print()
 
 # Test 2: Should fail on verify
 
@@ -44,5 +44,5 @@ try:
     jws2 = jose.sign(jws_header2, keys, payload)
     ver2 = jose.verify(jws2, keys)
 except Exception as e:
-    print e
-print
+    print(e)
+print()
